@@ -27,9 +27,12 @@ export APPSETTING_SCM_USE_LIBGIT2SHARP_REPOSITORY=0
 export KUDU_APPPATH=/opt/Kudu
 export APPDATA=/opt/Kudu/local
 
+if [ -z "${PORT}"]; then
+	export PORT=8181
+
 
 cd /opt/Kudu
 
 echo $(date) running .net
-ASPNETCORE_URLS=http://0.0.0.0:8181 runuser -p -u "$USER_NAME" -- dotnet Kudu.Services.Web.dll
+ASPNETCORE_URLS=http://0.0.0.0:"$PORT" runuser -p -u "$USER_NAME" -- dotnet Kudu.Services.Web.dll
 
