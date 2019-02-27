@@ -4,6 +4,10 @@ if [ $# -ne 5 ]; then
 	exit 1
 fi
 
+if [ -z "${PORT}"]; then
+	export PORT=8181
+fi
+
 GROUP_ID=$1
 GROUP_NAME=$2
 USER_ID=$3
@@ -26,11 +30,6 @@ export WEBSITE_SITE_NAME=$SITE_NAME
 export APPSETTING_SCM_USE_LIBGIT2SHARP_REPOSITORY=0
 export KUDU_APPPATH=/opt/Kudu
 export APPDATA=/opt/Kudu/local
-
-if [ -z "${PORT}"]; then
-	export PORT=8181
-fi
-
 
 cd /opt/Kudu
 
