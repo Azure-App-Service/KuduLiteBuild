@@ -29,6 +29,7 @@ export APPDATA=/opt/Kudu/local
 
 if [ -z "${PORT}"]; then
 	export PORT=8181
+fi
 
 
 cd /opt/Kudu
